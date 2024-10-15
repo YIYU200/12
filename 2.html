@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>童年回忆宝库</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 全局样式 */
+        body {
+            /* 设置字体为 Helvetica Neue、Arial 或 sans-serif */
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            /* 设置背景颜色为浅米色 */
+            background-color: #fafafa;
+            /* 外边距设为 0 */
+            margin: 0;
+            /* 内边距设为 0 */
+            padding: 0;
+            /* 使用弹性布局，方向为列，使页面内容垂直排列 */
+            display: flex;
+            flex-direction: column;
+            /* 设置最小高度为视口高度，确保页面占满整个屏幕 */
+            min-height: 100vh;
+        }
+
+        /* 迷人的导航栏样式 */
+      .navbar {
+            /* 设置背景颜色为深灰色 */
+            background-color: #222;
+            /* 处理溢出内容，确保导航栏内容不会超出边界 */
+            overflow: hidden;
+            /* 使用弹性布局，使导航栏内的元素水平排列 */
+            display: flex;
+            /* 垂直方向上居中对齐元素 */
+            align-items: center;
+            /* 水平方向上两端对齐元素，使元素在导航栏内均匀分布 */
+            justify-content: space-between;
+            /* 设置内边距，增加导航栏的空间 */
+            padding: 10px 20px;
+			 /* 设置导航栏的边框半径为 10px，使导航栏呈现圆角效果 */
+			border-radius: 10px;
+        }
+
+        /* 导航栏链接样式 */
+      .navbar a {
+            /* 使链接向左浮动 */
+            float: left;
+            /* 将链接显示为块级元素，方便设置样式和布局 */
+            display: block;
+            /* 设置链接文本颜色为白色 */
+            color: #fff;
+            /* 使链接内的文本居中对齐 */
+            text-align: center;
+            /* 设置链接的内边距，增加点击区域和美观度 */
+            padding: 12px 18px;
+            /* 去除链接的下划线 */
+            text-decoration: none;
+            /* 设置过渡效果，当鼠标悬停在链接上时，背景颜色和文本颜色会平滑过渡 */
+            transition: background-color 0.3s ease, color 0.3s ease;
+            /* 设置链接文本的字体大小 */
+            font-size: 16px;
+        }
+
+        /* 导航栏链接鼠标悬停样式 */
+      .navbar a:hover {
+            /* 当鼠标悬停在链接上时，设置背景颜色为深灰色 */
+            background-color: #555;
+            /* 当鼠标悬停在链接上时，设置文本颜色为金黄色 */
+            color: #ffcc00;
+        }
+
+        /* 导航栏 logo 样式 */
+      .logo {
+            /* 设置 logo 的宽度为 80px */
+            width: 60px;
+            /* 高度自动适应宽度 */
+            height: auto;
+        }
+
+        /* 温馨的内容区域样式 */
+      .content {
+            /* 使内容区域占据页面剩余的垂直空间 */
+            flex: 1;
+            /* 设置内边距，增加内容区域的空间 */
+            padding: 40px;
+        }
+
+        /* 视频容器的时尚样式 */
+      .video-container {
+            /* 设置相对定位，以便子元素可以相对于此容器进行定位 */
+            position: relative;
+            /* 使用弹性布局，使视频和视频文本在水平方向上排列 */
+            display: flex;
+            /* 设置弹性布局的主轴方向为行，即水平方向 */
+            flex-direction: row;
+            /* 垂直方向上居中对齐元素 */
+            align-items: center;
+            /* 水平方向上两端对齐元素，使视频和视频文本在容器内均匀分布 */
+            justify-content: space-between;
+        }
+
+        /* 视频样式 */
+      .video-fangda video {
+            /* 设置视频的宽度为 720px */
+            width: 720px;
+            /* 设置视频的高度为 405px */
+            height: 405px;
+            /* 设置视频的外边距，增加视频与周围元素的距离 */
+            margin: 40px;
+            /* 设置视频的边框半径，使视频呈现圆角效果 */
+            border-radius: 15px;
+            /* 设置视频的阴影效果，增加立体感 */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            /* 设置过渡效果，当鼠标悬停在视频上时，视频会平滑地放大 */
+            transition: transform 0.5s ease;
+        }
+
+        /* 视频鼠标悬停样式 */
+      .video-fangda video:hover {
+            /* 当鼠标悬停在视频上时，视频放大 1.1 倍 */
+            transform: scale(1.1);
+        }
+
+        /* 视频文本的精美样式 */
+      .video-text {
+            /* 设置绝对定位，使视频文本相对于视频容器进行定位 */
+            position: absolute;
+            /* 设置视频文本距离上方的距离为 120% */
+            top: 111%;
+            /* 设置视频文本在水平方向上居中对齐 */
+            left: 50%;
+            /* 使视频文本水平和垂直方向上都居中对齐 */
+            transform: translate(-50%, -50%);
+            /* 设置视频文本居中对齐 */
+            text-align: center;
+            /* 设置视频文本的颜色为深灰色 */
+            color: #444;
+            /* 设置视频文本的字体大小为 24px */
+            font-size: 24px;
+            /* 设置视频文本为粗体 */
+            font-weight: bold;
+            /* 设置视频文本的阴影效果，增加立体感 */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            /* 设置左边距，使视频文本在水平方向上偏移一定距离 */
+            margin-left: -400px;
+        }
+
+        /* 另一个视频文本样式 */
+      .video-text2 {
+            /* 设置绝对定位，使视频文本相对于视频容器进行定位 */
+            position: absolute;
+            /* 设置视频文本距离上方的距离为 120% */
+            top: 111%;
+            /* 设置视频文本在水平方向上居中对齐 */
+            left: 50%;
+            /* 使视频文本水平和垂直方向上都居中对齐 */
+            transform: translate(-50%, -50%);
+            /* 设置视频文本居中对齐 */
+            text-align: center;
+            /* 设置视频文本的颜色为深灰色 */
+            color: #444;
+            /* 设置视频文本的字体大小为 24px */
+            font-size: 24px;
+            /* 设置视频文本为粗体 */
+            font-weight: bold;
+            /* 设置视频文本的阴影效果，增加立体感 */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            /* 设置左边距，使视频文本在水平方向上偏移一定距离 */
+            margin-left: 400px;
+        }
+
+        /* 视频下方的空白区域样式 */
+      .video-space {
+            /* 将此元素显示为块级元素 */
+            display: block;
+            /* 设置宽度为 100%，占满整个父元素的宽度 */
+            width: 100%;
+            /* 设置高度为 100px */
+            height: 100px;
+            /* 设置背景颜色为浅灰色 */
+            background-color: #ddd;
+        }
+
+        /* 响应式设计 */
+        @media only screen and (max-width: 768px) {
+            /* 导航栏链接在小屏幕下的样式 */
+          .navbar a {
+                /* 去除浮动效果 */
+                float: none;
+                /* 使用弹性布局，使链接在小屏幕下垂直居中对齐 */
+                display: flex;
+                /* 使链接在水平和垂直方向上都居中对齐 */
+                justify-content: center;
+                align-items: center;
+                /* 设置内边距，增加点击区域和美观度 */
+                padding: 10px;
+                /* 设置字体大小为 14px */
+                font-size: 14px;
+            }
+
+            /* 视频在小屏幕下的样式 */
+          .video-fangda video {
+                /* 宽度设置为 100%，占满整个父元素的宽度 */
+                width: 100%;
+                /* 高度自动适应宽度 */
+                height: auto;
+                /* 设置外边距为 20px 0，即上下边距为 20px，左右边距为 0 */
+                margin: 20px 0;
+            }
+
+            /* 视频文本在小屏幕下的样式 */
+          .video-text,
+          .video-text2 {
+                /* 设置字体大小为 16px */
+                font-size: 16px;
+                /* 设置视频文本距离上方的距离为 110% */
+                top: 110%;
+                /* 去除左边距，使视频文本在小屏幕下居中显示 */
+                margin-left: 0;
+            }
+        }
+
+        /* 新增回忆卡片样式 */
+      .memory-card {
+            /* 设置背景颜色为白色 */
+            background-color: #fff;
+            /* 设置边框为 1px 宽的实线，颜色为浅灰色 */
+            border: 1px solid #ddd;
+            /* 设置边框半径为 15px，使回忆卡片呈现圆角效果 */
+            border-radius: 15px;
+            /* 设置阴影效果，增加立体感 */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            /* 设置内边距，增加回忆卡片的空间 */
+            padding: 30px;
+            /* 设置外边距，使回忆卡片之间有一定的距离 */
+            margin: 30px;
+            /* 使用弹性布局，使回忆卡片内的元素垂直排列 */
+            display: flex;
+            flex-direction: column;
+            /* 使回忆卡片内的元素在水平方向上居中对齐 */
+            align-items: center;
+        }
+
+        /* 回忆卡片中图片容器样式 */
+      .memory-card-images {
+            /* 使用弹性布局，使图片在水平方向上排列 */
+            display: flex;
+            /* 不允许图片换行，即使在空间不足的情况下 */
+            flex-wrap: nowrap;
+            /* 使图片在容器内均匀分布 */
+            justify-content: space-between;
+            /* 设置宽度为 100%，占满整个回忆卡片的宽度 */
+            width: 100%;
+        }
+		/* 当鼠标悬停在回忆卡片中的图片上时的样式 */
+		.memory-card img:hover {
+		    /* 图片放大 1.2 倍 */
+		    transform: scale(1.2);
+		    /* 设置过渡效果，使放大过程平滑，持续时间为 0.3 秒，过渡方式为 ease（缓入缓出） */
+		    transition: transform 0.3s ease;
+		}
+		
+		/* 当鼠标移出回忆卡片中的图片时的样式 */
+		.memory-card img:not(:hover) {
+		    /* 设置过渡效果，使缩小过程也平滑，持续时间为 0.3 秒，过渡方式为 ease（缓入缓出） */
+		    transition: transform 0.3s ease;
+		}
+
+        /* 回忆卡片中的图片样式 */
+      .memory-card img {
+            /* 设置图片的宽度为 200px */
+            width: 200px;
+            /* 设置图片的高度为 200px */
+            height: 200px;
+            /* 使图片适应容器大小，同时保持比例 */
+            object-fit: cover;
+            /* 设置图片的边框半径为 15px，使图片呈现圆角效果 */
+            border-radius: 15px;
+            /* 设置图片底部的外边距，增加图片之间的距离 */
+            margin-bottom: 15px;
+            /* 设置图片右侧的外边距，增加图片之间的距离 */
+            margin-right: 10px;
+        }
+
+        /* 回忆卡片中的标题样式 */
+      .memory-card h3 {
+            /* 设置字体大小为 20px */
+            font-size: 20px;
+            /* 设置文本颜色为深灰色 */
+            color: #333;
+            /* 去除标题的外边距 */
+            margin: 0;
+        }
+
+        /* 回忆卡片中的描述样式 */
+      .memory-card p {
+            /* 设置字体大小为 16px */
+            font-size: 16px;
+            /* 设置文本颜色为深灰色 */
+            color: #666;
+            /* 使描述文本居中对齐 */
+            text-align: center;
+        }
+		/* 导航栏链接样式 */
+		.navbar a {
+		    /* 使链接向左浮动 */
+		    float: left;
+		    /* 将链接设置为块级元素 */
+		    display: block;
+		    /* 设置链接文本颜色为白色 */
+		    color: #fff;
+		    /* 文本居中对齐 */
+		    text-align: center;
+		    /* 设置内边距 */
+		    padding: 12px 18px;
+		    /* 去除链接下划线 */
+		    text-decoration: none;
+		    /* 设置背景颜色过渡效果 */
+		    transition: background-color 0.3s ease;
+		    /* 设置相对定位，为后续添加鼠标悬停效果做准备 */
+		    position: relative;
+		}
+		
+		/* 导航栏链接鼠标悬停样式 */
+		.navbar a:hover {
+		    /* 鼠标悬停时，设置背景颜色为深灰色 */
+		    background-color: #555;
+		}
+		
+		/* 导航栏链接鼠标悬停时的下划线效果样式 */
+		.navbar a:hover::after {
+		    /* 必须设置内容为空，否则伪元素不会显示 */
+		    content: "";
+		    /* 设置绝对定位 */
+		    position: absolute;
+		    /* 定位在链接底部 */
+		    bottom: 0;
+		    /* 定位在链接左侧 */
+		    left: 0;
+		    /* 宽度为链接的 100% */
+		    width: 100%;
+		    /* 设置下划线的高度为 2px */
+		    height: 2px;
+		    /* 设置下划线的颜色为金黄色 */
+		    background-color: #ffcc00;
+		}
+		.fullscreen-image-container {
+		    /* 设置为固定定位，使容器在页面上的位置固定，不随页面滚动而移动 */
+		    position: fixed;
+		    /* 距离页面顶部 0 像素 */
+		    top: 0;
+		    /* 距离页面左侧 0 像素 */
+		    left: 0;
+		    /* 宽度占满整个视口宽度的 100% */
+		    width: 100%;
+		    /* 高度占满整个视口高度的 100% */
+		    height: 100%;
+		    /* 设置背景颜色为半透明的黑色，rgba(0, 0, 0, 0.8)表示黑色，透明度为 0.8 */
+		    background-color: rgba(0, 0, 0, 0.8);
+		    /* 使用弹性布局 */
+		    display: flex;
+		    /* 水平方向上居中对齐内容 */
+		    justify-content: center;
+		    /* 垂直方向上居中对齐内容 */
+		    align-items: center;
+		    /* 设置元素的堆叠顺序，确保全屏容器在其他元素之上显示，z-index 值越高，显示在越上层 */
+		    z-index: 9999;
+		}
+		
+		.fullscreen-image {
+		    /* 设置图片的最大宽度为视口宽度的 90% */
+		    max-width: 90%;
+		    /* 设置图片的最大高度为视口高度的 90% */
+		    max-height: 90%;
+			/* 这行代码设置放大后的图片有圆角 */
+			    border-radius: 15px;
+		}
+		
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <div class="navbar">
+        <a href="new_file.html">璀璨回忆</a>
+        <a href="#">童真乐园</a>
+        <a href="3.html">梦幻之旅</a>
+        <a href="4.html">时光隧道</a>
+        <a href="主页.html">
+            <img src="static/图层 2.jpg" alt="" class="logo">
+        </a>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="content">
+        <!-- 视频容器 -->
+        <div class="video-container">
+            <div class="video-fangda">
+                <video src="your_video.mp4"></video>
+            <div class="video-text">这是一段珍贵的童年回忆</div>
+            <div class="video-text2">快来一起重温美好时光</div>
+			</div>
+        </div>
+        <div class="video-space"></div>
+
+        <!-- 新增回忆卡片区域 -->
+        <div class="memory-cards">
+            <!-- 一个回忆卡片 -->
+            <div class="memory-card">
+                <!-- 回忆卡片中的图片容器 -->
+                <div class="memory-card-images">
+                    <img src="static/Image-12-06-39.png" alt="童年玩具">
+                    <img src="static/Image-12-06-41.png" alt="" />
+                    <img src="static/Image-12-06-43.png" alt="" />
+                    <img src="static/Image-12-06-46.png" alt="" />
+                    <img src="static/Image-12-06-50.png" alt="" />
+                    <img src="static/Image-12-06-52.png" alt="" />
+                </div>
+                <h3>心爱的玩具</h3>
+                <p>这个玩具陪伴了我的整个童年。</p>
+            </div>
+            <div class="memory-card">
+				<div class="memory-card-images">
+                <img src="static/Image-13-05-30.png" alt="童年游戏">
+				<img src="static/Image-13-05-25.png" alt="" />
+				<img src="static/Image-13-05-27.png" alt="" />
+				<img src="static/Image-13-05-34.png" alt="" />
+				<img src="static/Image-13-05-36.png" alt="" />
+				<img src="static/Image-13-05-45.png" alt="" />
+				
+				</div>
+                <h3>有趣的游戏</h3>
+                <p>和小伙伴们一起玩的游戏，充满了欢乐。</p>
+            </div>
+            <div class="memory-card">
+				<div class="memory-card-images">
+                <img src="static/Image-14-07-33.png" alt="童年美食">
+				<img src="static/Image-14-07-37.png" alt="" />
+				<img src="static/Image-14-07-41.png" alt="" />
+				<img src="static/Image-14-07-47.png" alt="" />
+				<img src="static/Image-14-07-51.png" alt="" />
+				<img src="static/Image-14-07-55.png" alt="" />
+				</div>
+                <h3>美味的零食</h3>
+                <p>那些让人回味无穷的童年美食。</p>
+            </div>
+        </div>
+    </div>
+	<script>
+	// 获取所有回忆卡片中的图片
+	const memoryImages = document.querySelectorAll('.memory-card img');
+	
+	memoryImages.forEach(image => {
+	    image.addEventListener('click', () => {
+	        // 创建全屏的图片容器
+	        const fullscreenImageContainer = document.createElement('div');
+	        // 为容器添加类名，以便应用样式
+	        fullscreenImageContainer.classList.add('fullscreen-image-container');
+	        // 将容器添加到页面的 body 中，使其在页面上可见
+	        document.body.appendChild(fullscreenImageContainer);
+	
+	        // 创建全屏显示的图片
+	        const fullscreenImage = document.createElement('img');
+	        // 设置全屏图片的 src 属性为点击的图片的 src 属性，确保显示正确的图片
+	        fullscreenImage.src = image.src;
+	        // 为全屏图片添加类名，以便应用样式
+	        fullscreenImage.classList.add('fullscreen-image');
+	        // 将全屏图片添加到全屏容器中，以便一起显示
+	        fullscreenImageContainer.appendChild(fullscreenImage);
+	
+	        // 点击全屏图片容器关闭全屏显示
+	        fullscreenImageContainer.addEventListener('click', () => {
+	            // 从页面的 body 中移除全屏图片容器，关闭全屏显示
+	            document.body.removeChild(fullscreenImageContainer);
+	        });
+	    });
+	});
+	</script>
+</body>
+
+</html>

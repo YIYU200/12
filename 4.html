@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>童年回忆宝库</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 优雅的基础样式 */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            /* 设置字体为 Helvetica Neue、Arial 或 sans-serif */
+            background-color: #f5f5f5;
+            /* 设置背景颜色为浅灰色 */
+            margin: 0;
+            /* 去除外边距 */
+            padding: 0;
+            /* 去除内边距 */
+        }
+
+        /* 迷人的导航栏样式 */
+      .navbar {
+            background-color: #222;
+            /* 设置导航栏背景颜色为深灰色 */
+            overflow: hidden;
+            /* 隐藏溢出内容 */
+            display: flex;
+            /* 使用弹性布局 */
+            align-items: center;
+            /* 垂直居中对齐 */
+            justify-content: space-between;
+            /* 两端对齐，使元素在水平方向上均匀分布 */
+            padding: 10px 20px;
+            /* 设置内边距 */
+			/* 设置导航栏的边框半径为 10px，使导航栏呈现圆角效果 */
+			border-radius: 10px;
+        }
+
+      .navbar a {
+            float: left;
+            /* 使链接向左浮动 */
+            display: block;
+            /* 将链接设置为块级元素 */
+            color: #fff;
+            /* 设置链接文本颜色为白色 */
+            text-align: center;
+            /* 文本居中对齐 */
+            padding: 12px 18px;
+            /* 设置内边距 */
+            text-decoration: none;
+            /* 去除链接下划线 */
+            transition: background-color 0.3s ease;
+            /* 设置背景颜色过渡效果 */
+        }
+
+      .navbar a:hover {
+            background-color: #555;
+            /* 鼠标悬停时，设置背景颜色为深灰色 */
+        }
+
+      .logo {
+            width: 60px;
+            /* 设置 logo 宽度为 60px */
+            height: auto;
+            /* 高度自动适应 */
+        }
+
+        /* 温馨的内容区域样式 */
+      .content {
+            padding: 30px;
+            /* 设置内容区域内边距为 30px */
+            background-color: #fff;
+            /* 设置背景颜色为白色 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* 设置阴影效果 */
+            border-radius: 10px;
+            /* 设置边框半径为 10px，呈现圆角效果 */
+        }
+
+        /* 时间线样式 */
+      .timeline {
+            list-style: none;
+            /* 去除列表默认样式 */
+            padding: 0;
+            /* 设置内边距为 0 */
+            margin: 30px 0;
+            /* 设置上下外边距为 30 像素，左右外边距为 0 */
+        }
+
+      .timeline li {
+            position: relative;
+            /* 设置相对定位，以便为:before 和:after 伪元素定位 */
+            padding-left: 30px;
+            /* 设置左内边距为 30 像素，为时间点留出空间 */
+            margin-bottom: 30px;
+            /* 设置底部外边距为 30 像素，使每个时间线项目之间有间隔 */
+            color: #555;
+            /* 设置文本颜色为深灰色 */
+            font-size: 18px;
+            /* 设置文本字体大小为 18 像素 */
+        }
+
+      .timeline li:before {
+            content: '';
+            /* 设置伪元素的内容为空字符串 */
+            position: absolute;
+            /* 设置绝对定位，相对于父元素（.timeline li）进行定位 */
+            left: 0;
+            /* 设置距离左侧为 0 */
+            top: 5px;
+            /* 设置距离顶部为 5 像素，调整时间点的垂直位置 */
+            width: 10px;
+            /* 设置宽度为 10 像素 */
+            height: 10px;
+            /* 设置高度为 10 像素 */
+            background-color: #333;
+            /* 设置背景颜色为深灰色 */
+            border-radius: 50%;
+            /* 设置边框半径为 50%，使时间点呈现圆形 */
+        }
+
+      .timeline li:after {
+            content: '';
+            /* 设置伪元素的内容为空字符串 */
+            position: absolute;
+            /* 设置绝对定位，相对于父元素（.timeline li）进行定位 */
+            left: 4px;
+            /* 设置距离左侧为 4 像素，使线与时间点有一定间隔 */
+            top: 15px;
+            /* 设置距离顶部为 15 像素，使线从时间点下方开始 */
+            width: 2px;
+            /* 设置宽度为 2 像素 */
+            height: 500px;
+            /* 设置一个较大的高度来实现长线效果，这里假设 500 像素的长度 */
+            background-color: #333;
+            /* 设置背景颜色为深灰色 */
+        }
+
+        /* 事件 1 图片样式 */
+      .timeline li img {
+            max-width: 150px;
+            /* 设置图片最大宽度为 150 像素 */
+            border-radius: 8px;
+            /* 设置边框半径为 8px，呈现圆角效果 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            /* 设置阴影效果 */
+            margin-left: 20px;
+            /* 设置左外边距为 20 像素 */
+            /* 设置过渡效果，当鼠标悬停时图片的变换和右边位置的变化将有 0.3 秒的过渡时间 */
+            transition: transform 0.3s ease, right 0.3s ease;
+            position: relative;
+            /* 设置相对定位 */
+        }
+
+      .timeline li img:hover {
+            transform: scale(2);
+            /* 鼠标悬停时，图片放大 2 倍 */
+            right: px;
+            /* 鼠标悬停时，图片向右移动 20 像素 */
+        }
+		
+		/* 当鼠标悬停在回忆卡片中的图片上时的样式 */
+		.memory-card img:hover {
+		    /* 图片放大 1.2 倍 */
+		    transform: scale(1.2);
+		    /* 设置过渡效果，使放大过程平滑，持续时间为 0.3 秒，过渡方式为 ease（缓入缓出） */
+		    transition: transform 0.3s ease;
+		}
+		
+		/* 当鼠标移出回忆卡片中的图片时的样式 */
+		.memory-card img:not(:hover) {
+		    /* 设置过渡效果，使缩小过程也平滑，持续时间为 0.3 秒，过渡方式为 ease（缓入缓出） */
+		    transition: transform 0.3s ease;
+		}
+		/* 图片大小样式 */
+		.tupiandaxiao {
+		    /* 设置宽度为 300px */
+		    width: 300px;
+		    /* 设置高度为 200px */
+		    height: 200px;
+		}
+		/* 导航栏链接样式 */
+		.navbar a {
+		    /* 使链接向左浮动 */
+		    float: left;
+		    /* 将链接设置为块级元素 */
+		    display: block;
+		    /* 设置链接文本颜色为白色 */
+		    color: #fff;
+		    /* 文本居中对齐 */
+		    text-align: center;
+		    /* 设置内边距 */
+		    padding: 12px 18px;
+		    /* 去除链接下划线 */
+		    text-decoration: none;
+		    /* 设置背景颜色过渡效果 */
+		    transition: background-color 0.3s ease;
+		    /* 设置相对定位，为后续添加鼠标悬停效果做准备 */
+		    position: relative;
+		}
+		
+		/* 导航栏链接鼠标悬停样式 */
+		.navbar a:hover {
+		    /* 鼠标悬停时，设置背景颜色为深灰色 */
+		    background-color: #555;
+		}
+		
+		/* 导航栏链接鼠标悬停时的下划线效果样式 */
+		.navbar a:hover::after {
+		    /* 必须设置内容为空，否则伪元素不会显示 */
+		    content: "";
+		    /* 设置绝对定位 */
+		    position: absolute;
+		    /* 定位在链接底部 */
+		    bottom: 0;
+		    /* 定位在链接左侧 */
+		    left: 0;
+		    /* 宽度为链接的 100% */
+		    width: 100%;
+		    /* 设置下划线的高度为 2px */
+		    height: 2px;
+		    /* 设置下划线的颜色为金黄色 */
+		    background-color: #ffcc00;
+		}
+		.fullscreen-image-container {
+		    /* 设置为固定定位，使容器在页面上的位置固定，不随页面滚动而移动 */
+		    position: fixed;
+		    /* 距离页面顶部 0 像素 */
+		    top: 0;
+		    /* 距离页面左侧 0 像素 */
+		    left: 0;
+		    /* 宽度占满整个视口宽度的 100% */
+		    width: 100%;
+		    /* 高度占满整个视口高度的 100% */
+		    height: 100%;
+		    /* 设置背景颜色为半透明的黑色，rgba(0, 0, 0, 0.8)表示黑色，透明度为 0.8 */
+		    background-color: rgba(0, 0, 0, 0.8);
+		    /* 使用弹性布局 */
+		    display: flex;
+		    /* 水平方向上居中对齐内容 */
+		    justify-content: center;
+		    /* 垂直方向上居中对齐内容 */
+		    align-items: center;
+		    /* 设置元素的堆叠顺序，确保全屏容器在其他元素之上显示，z-index 值越高，显示在越上层 */
+		    z-index: 9999;
+		}
+		
+		.fullscreen-image {
+		    /* 设置图片的最大宽度为视口宽度的 90% */
+		    max-width: 90%;
+		    /* 设置图片的最大高度为视口高度的 90% */
+		    max-height: 90%;
+			/* 这行代码设置放大后的图片有圆角 */
+			    border-radius: 15px;
+		}
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏部分 -->
+    <div class="navbar">
+        <a href="new_file.html">璀璨回忆</a>
+        <a href="#">童真乐园</a>
+        <a href="3.html">梦幻之旅</a>
+        <a href="4.html">时光隧道</a>
+        <a href="主页.html">
+            <img src="static/图层 2.jpg" alt="" class="logo">
+        </a>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="content">
+        <ul class="timeline">
+			<div class="memory-card">
+			<div class="tup"></div>
+            <li>事件 1 <img src="static/动画.png" alt="事件 1 图片"></li>
+            <div class="video-fangda">
+            </div>
+            <li>事件 2 <img src="static/四叶草.png "/></li>
+			<div class="video-fangda">
+			</div>
+            <li>事件 3<img src="static/logo.png"/></li>
+			<div class="video-fangda">
+			</div>
+			</div>
+        </ul>
+    </div>
+	<script>
+	// 获取所有回忆卡片中的图片
+	const memoryImages = document.querySelectorAll('.memory-card img');
+	
+	memoryImages.forEach(image => {
+	    image.addEventListener('click', () => {
+	        // 创建全屏的图片容器
+	        const fullscreenImageContainer = document.createElement('div');
+	        // 为容器添加类名，以便应用样式
+	        fullscreenImageContainer.classList.add('fullscreen-image-container');
+	        // 将容器添加到页面的 body 中，使其在页面上可见
+	        document.body.appendChild(fullscreenImageContainer);
+	
+	        // 创建全屏显示的图片
+	        const fullscreenImage = document.createElement('img');
+	        // 设置全屏图片的 src 属性为点击的图片的 src 属性，确保显示正确的图片
+	        fullscreenImage.src = image.src;
+	        // 为全屏图片添加类名，以便应用样式
+	        fullscreenImage.classList.add('fullscreen-image');
+	        // 将全屏图片添加到全屏容器中，以便一起显示
+	        fullscreenImageContainer.appendChild(fullscreenImage);
+	
+	        // 点击全屏图片容器关闭全屏显示
+	        fullscreenImageContainer.addEventListener('click', () => {
+	            // 从页面的 body 中移除全屏图片容器，关闭全屏显示
+	            document.body.removeChild(fullscreenImageContainer);
+	        });
+	    });
+	});
+	</script>
+</body>
+
+</html>

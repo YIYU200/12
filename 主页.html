@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>童年回忆宝库</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 优雅的基础样式 */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            /* 设置字体为 Helvetica Neue、Arial 或 sans-serif */
+            background-color: #f5f5f5;
+            /* 设置背景颜色为浅灰色 */
+            margin: 0;
+            /* 去除外边距 */
+            padding: 0;
+            /* 去除内边距 */
+        }
+
+        /* 迷人的导航栏样式 */
+       .navbar {
+            background-color: #222;
+            /* 设置导航栏背景颜色为深灰色 */
+            overflow: hidden;
+            /* 隐藏溢出内容 */
+            display: flex;
+            /* 使用弹性布局 */
+            align-items: center;
+            /* 垂直居中对齐 */
+            justify-content: space-between;
+            /* 两端对齐，使元素在水平方向上均匀分布 */
+            padding: 10px 20px;
+            /* 设置内边距 */
+			/* 设置导航栏的边框半径为 10px，使导航栏呈现圆角效果 */
+			border-radius: 10px;
+        }
+
+       .navbar a {
+            float: left;
+            /* 使链接向左浮动 */
+            display: block;
+            /* 将链接设置为块级元素 */
+            color: #fff;
+            /* 设置链接文本颜色为白色 */
+            text-align: center;
+            /* 文本居中对齐 */
+            padding: 12px 18px;
+            /* 设置内边距 */
+            text-decoration: none;
+            /* 去除链接下划线 */
+            transition: background-color 0.3s ease;
+            /* 设置背景颜色过渡效果 */
+        }
+		/* 调整导航栏返回箭头大小 */
+		.navbar a{
+			font-size: 25px;
+		}
+
+       .navbar a:hover {
+            background-color: #555;
+            /* 鼠标悬停时，设置背景颜色为深灰色 */
+        }
+
+       .logo {
+            width: 60px;
+            /* 设置 logo 宽度为 60px */
+            height: auto;
+            /* 高度自动适应 */
+        }
+
+        /* 温馨的内容区域样式 */
+       .content {
+            padding: 30px;
+            /* 设置内容区域内边距为 30px */
+        }
+
+        /* 视频容器的时尚样式 */
+       .video-container {
+            position: relative;
+            /* 设置相对定位 */
+            display: flex;
+            /* 使用弹性布局 */
+            flex-direction: row;
+            /* 设置主轴方向为水平方向 */
+            align-items: center;
+            /* 垂直居中对齐 */
+            justify-content: space-between;
+            /* 两端对齐，使元素在水平方向上均匀分布 */
+        }
+
+       .video-fangda video {
+            width: 680px;
+            /* 设置视频宽度为 680px */
+            height: 360px;
+            /* 设置视频高度为 360px */
+            margin: 30px;
+            /* 设置视频外边距为 30px */
+            border-radius: 10px;
+            /* 设置视频边框半径为 10px，使其呈现圆角效果 */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            /* 设置视频阴影效果 */
+            transition: transform 0.5s ease;
+            /* 设置视频变换过渡效果 */
+        }
+
+       .video-fangda video:hover {
+            transform: scale(1.1);
+            /* 鼠标悬停时，视频放大 1.1 倍 */
+        }
+
+        /* 视频文本的精美样式 */
+       .video-text {
+            position: absolute;
+            /* 设置绝对定位 */
+            top: 110%;
+            /* 距离上方 110%的位置 */
+            left: 50%;
+            /* 距离左侧 50%的位置 */
+            transform: translate(-50%, -50%);
+            /* 水平和垂直居中 */
+            text-align: center;
+            /* 文本居中对齐 */
+            color: #333;
+            /* 设置文本颜色为深灰色 */
+            font-size: 20px;
+            /* 设置文本字体大小为 20px */
+            font-weight: bold;
+            /* 设置文本加粗 */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            /* 设置文本阴影效果 */
+            margin-left: -375px;
+            /* 设置左边距 */
+        }
+
+       .video-text2 {
+            position: absolute;
+            /* 设置绝对定位 */
+            top: 110%;
+            /* 距离上方 110%的位置 */
+            left: 50%;
+            /* 距离左侧 50%的位置 */
+            transform: translate(-50%, -50%);
+            /* 水平和垂直居中 */
+            text-align: center;
+            /* 文本居中对齐 */
+            color: #333;
+            /* 设置文本颜色为深灰色 */
+            font-size: 20px;
+            /* 设置文本字体大小为 20px */
+            font-weight: bold;
+            /* 设置文本加粗 */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            /* 设置文本阴影效果 */
+            margin-left: 375px;
+            /* 设置左边距 */
+        }
+
+        /* 视频下方的空白区域样式 */
+       .video-space {
+            display: block;
+            /* 设置为块级元素 */
+            width: 100%;
+            /* 宽度为 100% */
+            height: 80px;
+            /* 高度为 80px */
+            background-color: #ddd;
+            /* 设置背景颜色为浅灰色 */
+        }
+
+        /* 拒绝访问提示文本的华丽样式 */
+       .rejected-message {
+            position: absolute;
+            /* 绝对定位 */
+            top: 50%;
+            /* 距离上方 50%的位置 */
+            left: 50%;
+            /* 距离左侧 50%的位置 */
+            transform: translate(-50%, -50%);
+            /* 水平和垂直居中 */
+            text-align: center;
+            /* 文本居中对齐 */
+            color: #f00;
+            /* 文本颜色为红色 */
+            font-size: 120px;
+            /* 文本字体大小为 */
+            font-weight: bold;
+            /* 文本加粗 */
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+            /* 文本阴影 */
+        }
+		/* 时间线样式 */
+		.timeline {
+		    /* 去除列表默认样式 */
+		    list-style: none;
+		    /* 设置内边距为 0 */
+		    padding: 0;
+		    /* 设置上下外边距为 30 像素，左右外边距为 0 */
+		    margin: 30px 0;
+		}
+		
+		.timeline li {
+		    /* 设置相对定位，以便为:before 伪元素定位 */
+		    position: relative;
+		    /* 设置左内边距为 30 像素，为时间点留出空间 */
+		    padding-left: 30px;
+		    /* 设置底部外边距为 20 像素，使每个时间线项目之间有间隔 */
+		    margin-bottom: 20px;
+		}
+		
+		.timeline li:before {
+		    /* 设置伪元素的内容为空字符串 */
+		    content: '';
+		    /* 设置绝对定位，相对于父元素（.timeline li）进行定位 */
+		    position: absolute;
+		    /* 设置距离左侧为 0 */
+		    left: 0;
+		    /* 设置距离顶部为 5 像素，调整时间点的垂直位置 */
+		    top: 5px;
+		    /* 设置宽度为 10 像素 */
+		    width: 10px;
+		    /* 设置高度为 10 像素 */
+		    height: 10px;
+		    /* 设置背景颜色为深灰色 */
+		    background-color: #333;
+		    /* 设置边框半径为 50%，使时间点呈现圆形 */
+		    border-radius: 50%;
+		}
+		/* 导航栏链接样式 */
+		.navbar a {
+		    /* 使链接向左浮动 */
+		    float: left;
+		    /* 将链接设置为块级元素 */
+		    display: block;
+		    /* 设置链接文本颜色为白色 */
+		    color: #fff;
+		    /* 文本居中对齐 */
+		    text-align: center;
+		    /* 设置内边距 */
+		    padding: 12px 18px;
+		    /* 去除链接下划线 */
+		    text-decoration: none;
+		    /* 设置背景颜色过渡效果 */
+		    transition: background-color 0.3s ease;
+		    /* 设置相对定位，为后续添加鼠标悬停效果做准备 */
+		    position: relative;
+		}
+		
+		/* 导航栏链接鼠标悬停样式 */
+		.navbar a:hover {
+		    /* 鼠标悬停时，设置背景颜色为深灰色 */
+		    background-color: #555;
+		}
+		
+		/* 导航栏链接鼠标悬停时的下划线效果样式 */
+		.navbar a:hover::after {
+		    /* 必须设置内容为空，否则伪元素不会显示 */
+		    content: "";
+		    /* 设置绝对定位 */
+		    position: absolute;
+		    /* 定位在链接底部 */
+		    bottom: 0;
+		    /* 定位在链接左侧 */
+		    left: 0;
+		    /* 宽度为链接的 100% */
+		    width: 100%;
+		    /* 设置下划线的高度为 2px */
+		    height: 2px;
+		    /* 设置下划线的颜色为金黄色 */
+		    background-color: #ffcc00;
+		}
+	/* From Uiverse.io by Mhyar-nsi */ 
+	button {
+	    /* 设置按钮的背景颜色为淡蓝色 */
+	    background-color: #f3f7fe;
+	    /* 设置按钮上文本的颜色为深蓝色 */
+	    color: #3b82f6;
+	    /* 去除按钮的边框 */
+	    border: none;
+	    /* 当鼠标悬停在按钮上时，显示为手型指针 */
+	    cursor: pointer;
+	    /* 设置按钮的边框半径为 8 像素，使其呈现圆角效果 */
+	    border-radius: 8px;
+	    /* 设置按钮的宽度为 100 像素 */
+	    width: 100px;
+	    /* 设置按钮的高度为 45 像素 */
+	    height: 45px;
+	    /* 设置过渡效果，持续时间为 0.3 秒，使状态变化平滑过渡 */
+	    transition: 0.3s;
+	}
+	
+	button:hover {
+	    /* 当鼠标悬停在按钮上时，将背景颜色设置为深蓝色 */
+	    background-color: #3b82f6;
+	    /* 设置阴影效果，不改变按钮的大小，只在周围显示半透明的深蓝色光晕 */
+	    box-shadow: 0 0 0 5px #3b83f65f;
+	    /* 将按钮上的文本颜色设置为白色 */
+	    color: #fff;
+	}
+
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="new_file.html"><button>←</button>
+    </a>
+		
+    </div>
+	<div class="content">
+	    <ul class="timeline">
+	        <li>事件 1</li>
+	        <li>事件 2</li>
+	        <li>事件 3</li>
+	    </ul>
+	</div>
+</body>
+
+</html>
