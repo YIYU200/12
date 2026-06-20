@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>老爸节日快乐 · 学生专属贺卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            /* 柔和少年风渐变背景 */
+            background: radial-gradient(circle at top, #b8d0eb 0, #607896 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+            padding: 24px 16px;
+        }
+        /* 主卡片：柔和圆角，清爽质感 */
+        .father-card {
+            width: 100%;
+            max-width: 430px;
+            background: linear-gradient(140deg, #f7faff, #eef5fc);
+            border-radius: 52px;
+            padding: 40px 30px;
+            box-shadow:
+                0 35px 60px rgba(30, 50, 80, 0.25),
+                0 12px 24px rgba(30, 50, 80, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.2,0,0.2,1);
+        }
+        .father-card:hover {
+            transform: translateY(-6px);
+        }
+        /* 微光流动动画 */
+        .father-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: cardShine 8s infinite linear;
+        }
+        @keyframes cardShine {
+            0% { left: -150%; }
+            100% { left: 150%; }
+        }
+        /* 顶部图标：书本+领带，学生专属意象 */
+        .icon-wrap {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 18px;
+        }
+        .father-icon {
+            font-size: 60px;
+            background: linear-gradient(180deg, #3a5775, #54789c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 6px 10px rgba(58, 87, 117, 0.18));
+        }
+        /* 主标题 */
+        .main-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: #243b55;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            position: relative;
+            z-index: 2;
+        }
+        .en-subtitle {
+            margin: 6px 0 26px;
+            font-size: 16px;
+            color: #607896;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+        /* 分割线 */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        .div-line {
+            width: 64px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #7897b9, transparent);
+        }
+        .div-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #54789c;
+        }
+        /* 未成年专属祝福文案区 */
+        .text-box {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 36px;
+            padding: 26px 20px;
+            border: 1px solid rgba(120, 151, 185, 0.25);
+            box-shadow: inset 0 2px 8px rgba(255,255,255,0.9);
+            position: relative;
+            z-index: 2;
+        }
+        .bless-item {
+            font-size: 20px;
+            color: #2c445e;
+            margin: 16px 0;
+            letter-spacing: 1px;
+        }
+        .bless-highlight {
+            font-weight: 600;
+            color: #243b55;
+            background: linear-gradient(120deg, #cfe0f3 0 45%, transparent 45%);
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+        /* 学生落款 */
+        .sign-text {
+            margin-top: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        .sign-text span {
+            display: inline-block;
+            padding: 8px 30px;
+            background: #d8e7f7;
+            border-radius: 99px;
+            font-size: 18px;
+            color: #243b55;
+            font-weight: 500;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+        /* 底部标语 */
+        .foot-tip {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #607896;
+            letter-spacing: 0.5px;
+        }
+        /* 互动按钮 学生清爽风格 */
+        .hug-btn {
+            margin-top: 20px;
+            padding: 13px 36px;
+            border: 1.5px solid #7897b9;
+            background: rgba(255,255,255,0.6);
+            border-radius: 99px;
+            font-size: 16px;
+            color: #2c445e;
+            cursor: pointer;
+            transition: all 0.24s ease;
+        }
+        .hug-btn:active {
+            transform: scale(0.96);
+        }
+        .hug-btn:hover {
+            background: #b8d0eb;
+            border-color: #54789c;
+            box-shadow: 0 8px 16px rgba(84, 120, 156, 0.3);
+        }
+        .msg-tip {
+            margin-top: 12px;
+            font-size: 13px;
+            color: #607896;
+            transition: opacity 0.4s;
+        }
+        /* 小屏手机适配 */
+        @media screen and (max-width: 380px) {
+            .father-card {
+                padding: 32px 22px;
+                border-radius: 44px;
+            }
+            .main-title {
+                font-size: 36px;
+            }
+            .bless-item {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="father-card">
+        <div class="icon-wrap">
+            <div class="father-icon">📖 👔</div>
+        </div>
+        <h1 class="main-title">老爸 节日快乐</h1>
+        <p class="en-subtitle">Happy Father's Day</p>
+
+        <div class="divider">
+            <div class="div-line"></div>
+            <div class="div-dot"></div>
+            <div class="div-line"></div>
+        </div>
+
+        <!-- 未成年学生专属三句祝福 -->
+        <div class="text-box">
+            <p class="bless-item">谢谢你 <span class="bless-highlight">陪我长大</span></p>
+            <p class="bless-item">我会努力 <span class="bless-highlight">好好读书</span></p>
+            <p class="bless-item">愿你少操劳 <span class="bless-highlight">平安健康</span></p>
+        </div>
+
+        <div class="sign-text">
+            <span>你的孩子 敬上</span>
+        </div>
+
+        <div class="foot-tip">
+            你是我的超级英雄，我永远崇拜你
+        </div>
+
+        <button class="hug-btn" id="hugBtn">🤗 送给爸爸一个拥抱</button>
+        <div class="msg-tip" id="resultMsg">点击按钮，说出藏在心里的感谢</div>
+    </div>
+
+    <script>
+        const btn = document.getElementById('hugBtn');
+        const msgBox = document.getElementById('resultMsg');
+        // 全学生视角暖心短句
+        const hugTextList = [
+            "爸爸辛苦啦，以后家务我多帮你分担",
+            "我会认真学习，不让你再为我的成绩操心",
+            "你不用总那么拼命，也要多照顾自己",
+            "平时不好意思说出口，其实我特别爱你",
+            "有你做我的爸爸，我觉得特别幸运"
+        ];
+        btn.onclick = () => {
+            const randomText = hugTextList[Math.floor(Math.random() * hugTextList.length)];
+            msgBox.textContent = randomText;
+            msgBox.style.opacity = 1;
+            setTimeout(() => {
+                msgBox.style.opacity = 0.6;
+            }, 4200)
+        }
+    </script>
+</body>
+</html>
